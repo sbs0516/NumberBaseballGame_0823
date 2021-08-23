@@ -2,6 +2,7 @@ package com.nepplus.numberbaseballgame_0823
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.nepplus.numberbaseballgame_0823.adapters.MessageAdapter
 import com.nepplus.numberbaseballgame_0823.datas.MessageData
 import kotlinx.android.synthetic.main.activity_main.*
@@ -82,10 +83,21 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
-        // ?S ?B 인지를 컴퓨터가 말하는 것으로 처리
-        mMessageList.add(MessageData("${strikeCount}S ${ballCount}B 입니다", "CPU"))
-        mAdapter.notifyDataSetChanged()
-        messageListView.smoothScrollToPosition(mMessageList.lastIndex)
+
+        // 3S 라면, 축하한다는 메시지 출력 후 입력을 막음
+        if(strikeCount == 3) {
+            mMessageList.add(MessageData("축하합니다. 정답입니다.", "CPU"))
+            mAdapter.notifyDataSetChanged()
+            messageListView.smoothScrollToPosition(mMessageList.lastIndex)
+            Toast.makeText(this, "게임을 종료합니다.", Toast.LENGTH_SHORT).show()
+            // 입력을 막음
+            numberEdt.isEnabled = false
+        } else {
+            // ?S ?B 인지를 컴퓨터가 말하는 것으로 처리
+            mMessageList.add(MessageData("${strikeCount}S ${ballCount}B 입니다", "CPU"))
+            mAdapter.notifyDataSetChanged()
+            messageListView.smoothScrollToPosition(mMessageList.lastIndex)
+        }
     }
 
 }
