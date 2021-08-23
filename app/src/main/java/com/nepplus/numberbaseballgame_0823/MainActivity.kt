@@ -52,29 +52,29 @@ class MainActivity : AppCompatActivity() {
 
         // 랜덤한 3개 숫자 뽑아내기
         // 1~9만 사용하고, 중복 불가
-        for(i in 0..2) {
-            while(true) {
-                val randomNum = (Math.random() * 9 + 1).toInt()
-                // mQuest ~ 에 이미 들어있는지 검사
-                var isDuplOk = true
-                for(num in mQuestionNumbers) {
-                    if(num == randomNum) {
-                        // 중복된 숫자. 사용 불가
-                        isDuplOk = false
-                    }
-                }
-                if(isDuplOk) {
-                    mQuestionNumbers.add(randomNum)
-                    break
-                }
-            }
-        }
+//        for(i in 0..2) {
+//            while(true) {
+//                val randomNum = (Math.random() * 9 + 1).toInt()
+//                // mQuest ~ 에 이미 들어있는지 검사
+//                var isDuplOk = true
+//                for(num in mQuestionNumbers) {
+//                    if(num == randomNum) {
+//                        // 중복된 숫자. 사용 불가
+//                        isDuplOk = false
+//                    }
+//                }
+//                if(isDuplOk) {
+//                    mQuestionNumbers.add(randomNum)
+//                    break
+//                }
+//            }
+//        }
 
-//        var numberList = arrayListOf<Int>(1,2,3,4,5,6,7,8,9)
-//        numberList.shuffle()
-//        mQuestionNumbers.add(numberList[0])
-//        mQuestionNumbers.add(numberList[1])
-//        mQuestionNumbers.add(numberList[2])
+        var numberList = mutableListOf(1,2,3,4,5,6,7,8,9)
+        numberList.shuffle()
+        mQuestionNumbers.add(numberList[0])
+        mQuestionNumbers.add(numberList[1])
+        mQuestionNumbers.add(numberList[2])
 
 
         // 환영 메시지를 채팅창에 띄우자
