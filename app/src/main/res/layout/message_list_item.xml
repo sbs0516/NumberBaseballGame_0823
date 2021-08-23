@@ -33,7 +33,7 @@
             android:id="@+id/userMessageTxt"
             android:layout_width="150dp"
             android:layout_height="50dp"
-            android:layout_gravity="center_vertical"
+            android:gravity="center_vertical"
             android:paddingLeft="10dp"
             android:background="@drawable/speech_bubble_my"
             android:text="내가 말한 내용" />
