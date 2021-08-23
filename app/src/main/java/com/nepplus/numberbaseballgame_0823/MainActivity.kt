@@ -33,6 +33,8 @@ class MainActivity : AppCompatActivity() {
 
             // numberEdt 의 문구를 비워주기
             numberEdt.setText("")
+            // 문구를 비우고 나면, 리스트뷰를 맨 마지막 데이터로 내리기
+            messageListView.smoothScrollToPosition(mMessageList.lastIndex)
         }
     }
 }
