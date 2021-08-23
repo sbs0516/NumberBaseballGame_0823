@@ -22,5 +22,17 @@ class MainActivity : AppCompatActivity() {
         mAdapter = MessageAdapter(this, R.layout.message_list_item, mMessageList)
 
         messageListView.adapter = mAdapter
+
+        okBtn.setOnClickListener {
+            val inputNumStr = numberEdt.text.toString()
+
+            val msg = MessageData(inputNumStr, "USER")
+
+            mMessageList.add(msg)
+            mAdapter.notifyDataSetChanged()
+
+            // numberEdt 의 문구를 비워주기
+            numberEdt.setText("")
+        }
     }
 }
