@@ -70,7 +70,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-//        var numberList = arrayListOf<Int>(1,2,3,4,5,6,7,8,9)
+//        var numberList = mutableListOf(1,2,3,4,5,6,7,8,9)
 //        numberList.shuffle()
 //        mQuestionNumbers.add(numberList[0])
 //        mQuestionNumbers.add(numberList[1])
