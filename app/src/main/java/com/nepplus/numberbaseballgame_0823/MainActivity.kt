@@ -43,10 +43,14 @@ class MainActivity : AppCompatActivity() {
 
                 makeQuestionNumbers()
                 messageListView.smoothScrollToPosition(mMessageList.lastIndex)
+
             } else if(inputNumStr.toInt() in 1..9) {
+
                 Toast.makeText(this, "게임을 종료합니다.", Toast.LENGTH_SHORT).show()
                 numberEdt.isEnabled = false
+
             } else {
+
                 checkAnswer(inputNumStr.toInt())
             }
         }
@@ -58,6 +62,7 @@ class MainActivity : AppCompatActivity() {
 
         val numberList = mutableListOf(1,2,3,4,5,6,7,8,9)
         val numberShuffledList =  numberList.shuffled()
+
         mQuestionNumbers.add(numberShuffledList[0])
         mQuestionNumbers.add(numberShuffledList[1])
         mQuestionNumbers.add(numberShuffledList[2])
@@ -89,15 +94,19 @@ class MainActivity : AppCompatActivity() {
         }
 
         if(strikeCount == 3) {
+
             mMessageList.add(MessageData("축하합니다. 정답입니다.", "CPU"))
             mMessageList.add(MessageData("새 게임을 시작하시겠습니까?", "CPU"))
             mMessageList.add(MessageData("0. 새 게임\n1~9. 게임 종료", "CPU"))
+
             mAdapter.notifyDataSetChanged()
             messageListView.smoothScrollToPosition(mMessageList.lastIndex)
         } else {
+
             mMessageList.add(MessageData("${strikeCount}S ${ballCount}B 입니다", "CPU"))
             mAdapter.notifyDataSetChanged()
             messageListView.smoothScrollToPosition(mMessageList.lastIndex)
+
         }
     }
 
