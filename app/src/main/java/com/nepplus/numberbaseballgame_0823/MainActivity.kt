@@ -68,6 +68,7 @@ class MainActivity : AppCompatActivity() {
         val numberList = mutableListOf(1,2,3,4,5,6,7,8,9)
         val numberShuffledList =  numberList.shuffled()
 
+        isGameEnd = false
         mQuestionNumbers.clear()
 
         mQuestionNumbers.add(numberShuffledList[0])
