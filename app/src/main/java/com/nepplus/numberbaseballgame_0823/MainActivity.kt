@@ -37,6 +37,8 @@ class MainActivity : AppCompatActivity() {
             numberEdt.setText("")
             messageListView.smoothScrollToPosition(mMessageList.lastIndex)
 
+            // 새 게임 시작할 수 있게 하는 코드
+
             if( inputNumStr == "0") {
 
                 makeQuestionNumbers()
@@ -51,6 +53,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun makeQuestionNumbers() {
+
+        // 반복문 대신 리스트 활용하여 shuffled 로 리스트 섞기
 
         val numberList = mutableListOf(1,2,3,4,5,6,7,8,9)
         val numberShuffledList =  numberList.shuffled()
