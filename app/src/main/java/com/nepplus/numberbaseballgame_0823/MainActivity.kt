@@ -11,6 +11,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
 
     val mMessageList = ArrayList<MessageData>()
+    var isGameEnd = false
 
     lateinit var mAdapter:MessageAdapter
 
@@ -39,18 +40,22 @@ class MainActivity : AppCompatActivity() {
 
             // 새 게임 시작할 수 있게 하는 코드
 
-            if( inputNumStr == "0") {
+            if(isGameEnd) {
+                if (inputNumStr == "0") {
 
-                makeQuestionNumbers()
-                messageListView.smoothScrollToPosition(mMessageList.lastIndex)
+                    makeQuestionNumbers()
+                    messageListView.smoothScrollToPosition(mMessageList.lastIndex)
 
-            } else if(inputNumStr.toInt() in 1..9) {
+                } else if (inputNumStr.toInt() in 1..9) {
 
-                Toast.makeText(this, "게임을 종료합니다.", Toast.LENGTH_SHORT).show()
-                numberEdt.isEnabled = false
+                    Toast.makeText(this, "게임을 종료합니다.", Toast.LENGTH_SHORT).show()
+                    numberEdt.isEnabled = false
 
+                } else {
+
+                    checkAnswer(inputNumStr.toInt())
+                }
             } else {
-
                 checkAnswer(inputNumStr.toInt())
             }
         }
@@ -62,6 +67,8 @@ class MainActivity : AppCompatActivity() {
 
         val numberList = mutableListOf(1,2,3,4,5,6,7,8,9)
         val numberShuffledList =  numberList.shuffled()
+
+        mQuestionNumbers.clear()
 
         mQuestionNumbers.add(numberShuffledList[0])
         mQuestionNumbers.add(numberShuffledList[1])
@@ -94,6 +101,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         if(strikeCount == 3) {
+
+            isGameEnd = true
 
             mMessageList.add(MessageData("축하합니다. 정답입니다.", "CPU"))
             mMessageList.add(MessageData("새 게임을 시작하시겠습니까?", "CPU"))
