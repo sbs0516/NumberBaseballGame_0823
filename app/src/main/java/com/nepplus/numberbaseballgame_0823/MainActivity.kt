@@ -41,19 +41,18 @@ class MainActivity : AppCompatActivity() {
             // 새 게임 시작할 수 있게 하는 코드
 
             if(isGameEnd) {
-                if (inputNumStr == "0") {
-
-                    makeQuestionNumbers()
-                    messageListView.smoothScrollToPosition(mMessageList.lastIndex)
-
-                } else if (inputNumStr.toInt() in 1..9) {
-
-                    Toast.makeText(this, "게임을 종료합니다.", Toast.LENGTH_SHORT).show()
-                    numberEdt.isEnabled = false
-
-                } else {
-
-                    checkAnswer(inputNumStr.toInt())
+                when(inputNumStr) {
+                    "0" -> {
+                        makeQuestionNumbers()
+                        messageListView.smoothScrollToPosition(mMessageList.lastIndex)
+                    }
+                    in "1".."9" -> {
+                        Toast.makeText(this, "게임을 종료합니다.", Toast.LENGTH_SHORT).show()
+                        numberEdt.isEnabled = false
+                    }
+                    else -> {
+                        checkAnswer(inputNumStr.toInt())
+                    }
                 }
             } else {
                 checkAnswer(inputNumStr.toInt())
