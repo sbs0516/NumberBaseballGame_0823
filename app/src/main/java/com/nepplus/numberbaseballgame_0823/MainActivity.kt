@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
             messageListView.smoothScrollToPosition(mMessageList.lastIndex)
 
             if( inputNumStr == "0") {
+
                 makeQuestionNumbers()
                 messageListView.smoothScrollToPosition(mMessageList.lastIndex)
             } else if(inputNumStr.toInt() in 1..9) {
